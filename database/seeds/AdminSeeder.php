@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin;
 use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
@@ -11,11 +12,12 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        \App\User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('password'),
-            'role' => 1,
-        ]);
+        if(!Admin::count()){
+            Admin::create([
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => bcrypt('password'),
+            ]);
+        }
     }
 }

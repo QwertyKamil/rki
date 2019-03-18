@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel - Kominiarczyk</title>
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('semanticUI/semantic.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('semanticUI/semantic-admin.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/panel.css') }}">
+    <link rel="stylesheet" href="{{ asset('Semantic_UI/semantic.min.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('Semantic_UI/semantic-admin.css') }}">--}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 <body>
@@ -20,11 +19,11 @@
     <div class="logged-info">
         <p>Witaj, {{Auth::user()->name}}</p>
         <p>|</p>
-        <a class="" href="{{ route('logout-admin') }}"
+        <a class="" href="{{ route('admin.logout') }}"
            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
             Wyloguj
         </a>
-        <form id="logout-form" action="{{ route('logout-admin') }}" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
     </div>
@@ -35,10 +34,10 @@
     @yield('content')
 </div>
 
-<script src="{{ asset('semanticUI/jquery-3.1.1.min.js') }} "
+<script src="{{ asset('js/jquery-3.1.1.min.js') }} "
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
-<script src="{{ asset('semanticUI/semantic.min.js') }}"></script>
+<script src="{{ asset('Semantic_UI/semantic.min.js') }}"></script>
 <script>
     $('.message .close')
         .on('click', function () {

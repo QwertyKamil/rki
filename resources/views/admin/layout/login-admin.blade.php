@@ -8,11 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Logowanie - Kominiarczyk</title>
+    <title>Logowanie - ADMIN RKI</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ url('semanticUI/semantic.min.css') }}">
-    <link rel="stylesheet" href="{{ url('semanticUI/semantic-admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('Semantic_UI/semantic.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Semantic_UI/semantic-admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 
 </head>
@@ -21,9 +22,9 @@
     @yield('content')
 </div>
 
-<script src="{{ url('semanticUI/jquery-3.1.1.min.js') }} "
+<script src="{{ asset('Semantic_UI/jquery-3.1.1.min.js') }} "
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
-<script src="{{ url('semanticUI/semantic.min.js') }}"></script>
+<script src="{{ asset('Semantic_UI/semantic.min.js') }}"></script>
 </body>
 </html>
