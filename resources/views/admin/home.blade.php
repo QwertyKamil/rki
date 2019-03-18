@@ -1,17 +1,7 @@
-@extends('admin.layout.auth')
+@extends('admin.layout.admin')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in as Admin!
-                </div>
-            </div>
-        </div>
+    <div class="welcome">
+        <h1>Witaj w panelu administratora RKI</h1>
     </div>
-</div>
 @endsection
