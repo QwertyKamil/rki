@@ -7,7 +7,7 @@
                 <h2 class="list-title">Lista konkursów</h2>
             </div>
             <div class="right aligned eight wide column search-container">
-                <a class="btn-add" href="{{route('admin.admin-contests-add')}}"><i class="far fa-plus"></i> Dodaj konkurs</a>
+                <a class="btn-add" href="{{route('admin.admin-parts-add', $contest)}}"><i class="far fa-plus"></i> Dodaj konkurs</a>
             </div>
         </div>
 
@@ -20,13 +20,12 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($contests as $item)
+            @foreach($parts as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td class="list-actions">
-                        <a href="{{route('admin.admin-contests-edit', $item)}}" class="btn-table">Edytuj</a>
-                        <a href="{{route('admin.admin-parts', $item)}}" class="btn-table">Części</a>
+                        <a href="{{route('admin.admin-parts-edit', ['contest'=>$contest,'part'=>$item])}}" class="btn-table">Edytuj</a>
 
                         <a href="#" class="btn-table"
                            onclick="$('.ui.basic.modal-{{$item->id}}').modal('show');">Usuń</a>
@@ -48,7 +47,7 @@
                                     <i class="checkmark icon"></i>
                                     Tak
                                 </div>
-                                {!! Form::open(['route'=>['admin.admin-contests-delete',$item],'method'=>'DELETE']) !!}
+                                {!! Form::open(['route'=>['admin.admin-parts-delete','contest'=>$contest,'part'=>$item],'method'=>'DELETE']) !!}
                                 {!! Form::close() !!}
                             </div>
                         </div>
@@ -59,7 +58,7 @@
             <tfoot>
             <tr>
                 <th colspan="3">
-                    {{ $contests->links('admin.layout.pagination') }}
+                    {{ $parts->links('admin.layout.pagination') }}
                 </th>
             </tr>
             </tfoot>
