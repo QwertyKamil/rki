@@ -4,10 +4,10 @@
     <div>
         <div class="ui grid">
             <div class="ui large eight wide column">
-                <h2 class="list-title">Konkurs {{$contest->name}} lista części</h2>
+                <h2 class="list-title">Konkurs {{$contest->name}}, cześć {{$part->name}} lista pytań</h2>
             </div>
             <div class="right aligned eight wide column search-container">
-                <a class="btn-add" href="{{route('admin.admin-parts-add', $contest)}}"><i class="far fa-plus"></i> Dodaj konkurs</a>
+                <a class="btn-add" href="{{route('admin.admin-questions-add', ['contest'=>$contest,'part'=>$part])}}"><i class="far fa-plus"></i> Dodaj konkurs</a>
             </div>
         </div>
 
@@ -20,13 +20,12 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($parts as $item)
+            @foreach($questions as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td class="list-actions">
-                        <a href="{{route('admin.admin-parts-edit', ['contest'=>$contest,'part'=>$item])}}" class="btn-table">Edytuj</a>
-                        <a href="{{route('admin.admin-questions', ['contest'=>$contest,'part'=>$item])}}" class="btn-table">Pytania</a>
+                        <a href="{{route('admin.admin-questions-edit', ['contest'=>$contest,'part'=>$part,'question'=>$item])}}" class="btn-table">Edytuj</a>
 
                         <a href="#" class="btn-table"
                            onclick="$('.ui.basic.modal-{{$item->id}}').modal('show');">Usuń</a>
@@ -48,7 +47,7 @@
                                     <i class="checkmark icon"></i>
                                     Tak
                                 </div>
-                                {!! Form::open(['route'=>['admin.admin-parts-delete','contest'=>$contest,'part'=>$item],'method'=>'DELETE']) !!}
+                                {!! Form::open(['route'=>['admin.admin-questions-delete','contest'=>$contest,'part'=>$part,'question'=>$item],'method'=>'DELETE']) !!}
                                 {!! Form::close() !!}
                             </div>
                         </div>
@@ -59,7 +58,7 @@
             <tfoot>
             <tr>
                 <th colspan="3">
-                    {{ $parts->links('admin.layout.pagination') }}
+                    {{ $questions->links('admin.layout.pagination') }}
                 </th>
             </tr>
             </tfoot>
