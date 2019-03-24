@@ -16,6 +16,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nazwa</th>
+                <th>Link</th>
                 <th>Akcje</th>
             </tr>
             </thead>
@@ -24,9 +25,11 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
+                    <td>{{ route('test',$item->token) }}</td>
                     <td class="list-actions">
                         <a href="{{route('admin.admin-contests-edit', $item)}}" class="btn-table">Edytuj</a>
                         <a href="{{route('admin.admin-parts', $item)}}" class="btn-table">Części</a>
+                        <a href="{{route('admin.admin-contest-users', ['contest'=>$item])}}" class="btn-table">Uczestnicy/odpowiedzi</a>
 
                         <a href="#" class="btn-table"
                            onclick="$('.ui.basic.modal-{{$item->id}}').modal('show');">Usuń</a>
@@ -58,7 +61,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <th colspan="3">
+                <th colspan="4">
                     {{ $contests->links('admin.layout.pagination') }}
                 </th>
             </tr>

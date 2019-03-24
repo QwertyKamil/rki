@@ -17,6 +17,8 @@ Route::get('/konkursy/edytuj/{contest}', 'AdminAuth\ContestController@edit')->na
 Route::post('/konkursy/edytuj/{contest}', 'AdminAuth\ContestController@update')->name('admin-contests-update');
 Route::delete('/konkursy/usuń/{contest}', 'AdminAuth\ContestController@destroy')->name('admin-contests-delete');
 
+Route::get('/konkurs/{contest}/uczestnicy', 'AdminAuth\ContestUsersController@index')->name('admin-contest-users');
+
 Route::get('/konkurs/{contest}/czesci', 'AdminAuth\ContestPartsController@index')->name('admin-parts');
 Route::get('/konkurs/{contest}/czesci/dodaj', 'AdminAuth\ContestPartsController@create')->name('admin-parts-add');
 Route::post('/konkurs/{contest}/czesci/dodaj', 'AdminAuth\ContestPartsController@store')->name('admin-parts-store');

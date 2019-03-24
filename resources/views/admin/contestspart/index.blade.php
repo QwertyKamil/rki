@@ -7,7 +7,7 @@
                 <h2 class="list-title">Konkurs {{$contest->name}} lista części</h2>
             </div>
             <div class="right aligned eight wide column search-container">
-                <a class="btn-add" href="{{route('admin.admin-parts-add', $contest)}}"><i class="far fa-plus"></i> Dodaj konkurs</a>
+                <a class="btn-add" href="{{route('admin.admin-parts-add', $contest)}}"><i class="far fa-plus"></i> Dodaj część</a>
             </div>
         </div>
 

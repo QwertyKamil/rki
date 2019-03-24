@@ -20,6 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->unsignedBigInteger('type');
             $table->unsignedBigInteger('contest_part_id');
             $table->foreign('contest_part_id')->references('id')->on('contest_parts')->onDelete('cascade');
+            $table->unsignedInteger('weight')->default(1);
             $table->timestamps();
         });
     }

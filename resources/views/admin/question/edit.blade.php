@@ -12,6 +12,9 @@
                 <div class="field">
                     {!! Form::text('name',null,['class'=>'']) !!}
                 </div>
+                <div class="field">
+                    {!! Form::number('weight',null,['class'=>'','placeholder'=>'waga']) !!}
+                </div>
                 <div>
                     {!! Form::textarea('text',null,['class'=>'']) !!}
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminAuth;
 use App\Contest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ContestController extends Controller
 {
@@ -39,6 +40,7 @@ class ContestController extends Controller
     {
         Contest::create([
             'name'=>$request->name,
+            'token'=>Str::random(16),
         ]);
         return redirect()->route('admin.admin-contests')->with('success','Dodano konkurs');
     }

@@ -41,4 +41,20 @@ class User extends Authenticatable
     {
         return $this->role == 1;
     }
+
+    public function answers()
+    {
+        return $this->hasMany(UsersAnswer::class,'user_id','id');
+    }
+
+    public function getAnswers (Contest $contest)
+    {
+        $q_ids = [];
+        foreach ($contest->parts as $part) {
+            $q_ids = array_merge($q_ids,$part->questions->pluck('id')->toArray());
+        }
+
+        return $this->answers()->whereIn('question_id',$q_ids)->get();
+
+    }
 }

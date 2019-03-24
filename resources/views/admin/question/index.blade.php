@@ -7,7 +7,7 @@
                 <h2 class="list-title">Konkurs {{$contest->name}}, cześć {{$part->name}} lista pytań</h2>
             </div>
             <div class="right aligned eight wide column search-container">
-                <a class="btn-add" href="{{route('admin.admin-questions-add', ['contest'=>$contest,'part'=>$part])}}"><i class="far fa-plus"></i> Dodaj konkurs</a>
+                <a class="btn-add" href="{{route('admin.admin-questions-add', ['contest'=>$contest,'part'=>$part])}}"><i class="far fa-plus"></i> Dodaj pytanie</a>
             </div>
         </div>
 
@@ -25,7 +25,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td class="list-actions">
-                        <a href="{{route('admin.admin-questions-edit', ['contest'=>$contest,'part'=>$part,'question'=>$item])}}" class="btn-table">Edytuj</a>
+                        {{--<a href="{{route('admin.admin-questions-edit', ['contest'=>$contest,'part'=>$part,'question'=>$item])}}" class="btn-table">Edytuj</a>--}}
 
                         <a href="#" class="btn-table"
                            onclick="$('.ui.basic.modal-{{$item->id}}').modal('show');">Usuń</a>

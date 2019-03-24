@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\AdminAuth;
 
+use App\Answer;
 use App\Contest;
 use App\ContestPart;
 use App\Question;
@@ -45,12 +46,33 @@ class QuestionsController extends Controller
      */
     public function store(Request $request,Contest $contest, ContestPart $part)
     {
-        Question::create([
+        $question = Question::create([
            'name'=>$request->name,
            'text'=>$request->text,
            'type'=>$request->type,
+           'weight'=>$request->weight,
            'contest_part_id'=>$part->id,
         ]);
+
+        if(isset($request->answers)){
+            foreach ($request->answers as $key => $answer) {
+                Answer::create([
+                    'question_id'=>$question->id,
+                    'answer'=>$answer,
+                    'correct'=>($request->correct == $key+1)?1:0,
+                ]);
+            }
+        }
+        elseif(isset($request->patterns)){
+            foreach ($request->patterns as $key => $answer) {
+                Answer::create([
+                    'question_id'=>$question->id,
+                    'answer'=>$answer,
+                    'correct'=>1,
+                ]);
+            }
+
+        }
         return redirect()->route('admin.admin-questions',['contest'=>$contest,'part'=>$part])->with('success','Dodano pytanie');
     }
 
@@ -93,6 +115,7 @@ class QuestionsController extends Controller
             'name'=>$request->name,
             'text'=>$request->text,
             'type'=>$request->type,
+            'weight'=>$request->weight,
         ]);
         return redirect()->route('admin.admin-questions',['contest'=>$contest,'part'=>$part])->with('success','Zedytowano pytanie');
     }
