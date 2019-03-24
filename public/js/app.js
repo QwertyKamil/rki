@@ -1819,12 +1819,11 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    setInterval(function () {
-      _this.changeTime();
-    }, 1000);
-
     if (window.localStorage.getItem('userId')) {
       this.userId = parseInt(window.localStorage.getItem('userId'));
+      setInterval(function () {
+        _this.changeTime();
+      }, 1000);
     }
 
     if (window.localStorage.getItem('time')) {
@@ -1860,17 +1859,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     registered: function registered(userId) {
+      var _this2 = this;
+
       this.userId = userId;
       window.localStorage.setItem('userId', userId);
+      setInterval(function () {
+        _this2.changeTime();
+      }, 1000);
     },
     getQuestions: function getQuestions() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(window.location.origin, "/api/contest/questions/").concat(this.token)).then(function (request) {
         console.log(request);
-        _this2.questions = request.data.questions;
-        _this2.currentQuestionNr = 1;
-        _this2.maxQuestions = _this2.questions.length;
+        _this3.questions = request.data.questions;
+        _this3.currentQuestionNr = 1;
+        _this3.maxQuestions = _this3.questions.length;
       });
     },
     nextQuestion: function nextQuestion() {

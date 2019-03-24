@@ -50,18 +50,20 @@
             }
         },
         created() {
-            setInterval(() => {
-                this.changeTime();
-            }, 1000);
             if (window.localStorage.getItem('userId')) {
                 this.userId = parseInt(window.localStorage.getItem('userId'));
+                setInterval(() => {
+                    this.changeTime();
+                }, 1000);
             }
+
             if (window.localStorage.getItem('time')) {
                 this.time = parseInt(window.localStorage.getItem('time'));
             }
             else{
                 this.time = 60*60;
             }
+
             this.getQuestions();
         },
         components: {
@@ -90,6 +92,9 @@
             registered: function (userId) {
                 this.userId = userId;
                 window.localStorage.setItem('userId', userId);
+                setInterval(() => {
+                    this.changeTime();
+                }, 1000);
             },
             getQuestions: function () {
                 axios.post(`${window.location.origin}/api/contest/questions/${this.token}`)
