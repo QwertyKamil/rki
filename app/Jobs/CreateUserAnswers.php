@@ -38,12 +38,16 @@ class CreateUserAnswers implements ShouldQueue
     {
         foreach ($this->contest->parts as $part) {
             foreach ($part->questions as $question) {
-                UsersAnswer::create([
-                    'question_id'=>$question->id,
-                    'user_id'=>$this->user->id,
-                    'correct'=>0,
-                    'answer'=>'',
-                ]);
+                $answer = UsersAnswer::where('question_id',$question->id)
+                    ->where('user_id',$this->user->id)->first();
+                if(!$answer){
+                    UsersAnswer::create([
+                        'question_id'=>$question->id,
+                        'user_id'=>$this->user->id,
+                        'correct'=>0,
+                        'answer'=>'',
+                    ]);
+                }
             }
         }
     }

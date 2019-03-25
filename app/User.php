@@ -54,7 +54,7 @@ class User extends Authenticatable
             $q_ids = array_merge($q_ids,$part->questions->pluck('id')->toArray());
         }
 
-        return $this->answers()->whereIn('question_id',$q_ids)->get();
+        return $q_ids?$this->answers()->whereIn('question_id',$q_ids)->get():[];
 
     }
 }

@@ -14,11 +14,11 @@ class ContestUsersController extends Controller
     {
         $part = $contest->parts()->first();
         $questions = $part->questions->pluck('id');
-        $users_ids = UsersAnswer::where('question_id',$questions)->select('user_id')->distinct('user_id')->get();
+        $users_ids = (count($questions->toArray()))?UsersAnswer::where('question_id',$questions->toArray())->select('user_id')->distinct('user_id')->get():[];
 
-        $users = User::whereIn('id',$users_ids->pluck('user_id')->values())->paginate(10);
 
-        /*dd($users[0]->getAnswers($contest));*/
+        $users = (count($users_ids))?User::whereIn('id',$users_ids->pluck('user_id')->values())->paginate(10):User::where('id','<',1)->paginate(10);
+
 
         return view('admin.usersanswers.index',compact('users','contest'));
 
