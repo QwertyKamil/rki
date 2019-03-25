@@ -15,6 +15,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                     <td>{{ $item->name }}</td>
                     <td></td>
                     <td></td>
+                    <td></td>
                 </tr>
                 @foreach($item->getAnswers($contest) as $answer)
                     <tr>
@@ -31,6 +33,9 @@
                         <td>{{ strip_tags($answer->question->text )}}</td>
                         <td>{{$answer->answer}}</td>
                         <td>{{$answer->correct}}</td>
+                        <td>
+                            <a href="{{route('admin.admin-contest-users-edit',['contest'=>$contest,'answer'=>$answer])}}" class="btn-table">Edytuj</a>
+                        </td>
                     </tr>
                 @endforeach
             @endforeach

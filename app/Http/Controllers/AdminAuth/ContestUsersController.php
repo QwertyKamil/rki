@@ -21,8 +21,18 @@ class ContestUsersController extends Controller
 
 
         return view('admin.usersanswers.index',compact('users','contest'));
+    }
 
+    public function edit(Contest $contest, UsersAnswer $answer)
+    {
+        return view('admin.usersanswers.edit',compact('answer'));
+    }
 
-
+    public function update(Request $request, Contest $contest, UsersAnswer $answer)
+    {
+        $answer->update([
+            'correct'=>$request->correct,
+        ]);
+        return redirect()->route('admin.admin-contest-users',$contest);
     }
 }
