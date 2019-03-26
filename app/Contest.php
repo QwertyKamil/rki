@@ -12,4 +12,14 @@ class Contest extends Model
     {
         return $this->hasMany(ContestPart::class,'contest_id','id');
     }
+
+    public function questions()
+    {
+        $return = [];
+        foreach ($this->parts as $part) {
+            $return = array_merge($return,$part->questions->pluck('id')->toArray());
+        }
+
+        return $return;
+    }
 }

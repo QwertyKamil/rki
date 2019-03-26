@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Contest;
+use App\Exports\ContestExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ContestController extends Controller
 {
@@ -94,5 +96,13 @@ class ContestController extends Controller
     {
         $contest->delete();
         return redirect()->route('admin.admin-contests')->with('success','Usunięto konkurs');
+    }
+
+    public function export(Contest $contest)
+    {
+
+        $export = new ContestExport($contest);
+
+        return Excel::download($export, 'wyniki.xlsx');
     }
 }
