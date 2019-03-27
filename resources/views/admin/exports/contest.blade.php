@@ -33,7 +33,7 @@
                         }
                     @endphp
                     @if($answer)
-                        <td>{{$answer->answer}}</td>
+                        <td>{{$answer->correct}} pkt</td>
                     @else
                         <td></td>
                     @endif

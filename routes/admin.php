@@ -10,7 +10,7 @@ Route::get('/home', function () {
     return view('admin.home');
 })->name('home');
 
-Route::get('/konkursy/{contest}/export', 'AdminAuth\ContestController@export')->name('admin-contests');
+Route::get('/konkursy/{contest}/export', 'AdminAuth\ContestController@export')->name('admin-contests-export');
 Route::get('/konkursy', 'AdminAuth\ContestController@index')->name('admin-contests');
 Route::get('/konkursy/dodaj', 'AdminAuth\ContestController@create')->name('admin-contests-add');
 Route::post('/konkursy/dodaj', 'AdminAuth\ContestController@store')->name('admin-contests-store');

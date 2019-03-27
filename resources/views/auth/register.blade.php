@@ -4,6 +4,11 @@
     <div class="centred-container">
         <div class="ui raised very padded text container segment">
             <h1 class="ui header">Rejestracja</h1>
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    {{$error}}
+                @endforeach
+            @endif
             <form method="POST" class="ui form" action="{{ route('register') }}" aria-label="{{ __('Login') }}">
                 @csrf
                 <div class="field">

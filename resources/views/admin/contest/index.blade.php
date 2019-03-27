@@ -30,16 +30,17 @@
                         <a href="{{route('admin.admin-contests-edit', $item)}}" class="btn-table">Edytuj</a>
                         <a href="{{route('admin.admin-parts', $item)}}" class="btn-table">Części</a>
                         <a href="{{route('admin.admin-contest-users', ['contest'=>$item])}}" class="btn-table">Uczestnicy/odpowiedzi</a>
+                        <a href="{{route('admin.admin-contests-export', $item)}}" class="btn-table">Pobierz wyniki (xslx)</a>
 
                         <a href="#" class="btn-table"
                            onclick="$('.ui.basic.modal-{{$item->id}}').modal('show');">Usuń</a>
                         <div class="ui basic modal modal-{{$item->id}}">
                             <div class="ui icon header">
                                 <i class="archive icon red"></i>
-                                Usuń miasto
+                                Usuń test
                             </div>
                             <div class="content">
-                                <p>Czy na pewno usunąć miasto {{ $item->name }} ?</p>
+                                <p>Czy na pewno usunąć test {{ $item->name }} ?</p>
                             </div>
                             <div class="actions">
                                 <div class="ui red basic cancel inverted button">

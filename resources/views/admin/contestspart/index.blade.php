@@ -33,10 +33,10 @@
                         <div class="ui basic modal modal-{{$item->id}}">
                             <div class="ui icon header">
                                 <i class="archive icon red"></i>
-                                Usuń miasto
+                                Usuń część
                             </div>
                             <div class="content">
-                                <p>Czy na pewno usunąć miasto {{ $item->name }} ?</p>
+                                <p>Czy na pewno usunąć część {{ $item->name }} ?</p>
                             </div>
                             <div class="actions">
                                 <div class="ui red basic cancel inverted button">
