@@ -17,6 +17,7 @@
                 <th>ID</th>
                 <th>Nazwa</th>
                 <th>Link</th>
+                <th>Ilość pytań</th>
                 <th>Akcje</th>
             </tr>
             </thead>
@@ -26,6 +27,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ route('test',$item->token) }}</td>
+                    <td>{{ count($item->questions()) }}</td>
                     <td class="list-actions">
                         <a href="{{route('admin.admin-contests-edit', $item)}}" class="btn-table">Edytuj</a>
                         <a href="{{route('admin.admin-parts', $item)}}" class="btn-table">Części</a>
@@ -62,7 +64,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <th colspan="4">
+                <th colspan="5">
                     {{ $contests->links('admin.layout.pagination') }}
                 </th>
             </tr>
