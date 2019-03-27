@@ -38,9 +38,14 @@ class ContestPartsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @param Contest $contest
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, Contest $contest)
     {
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+
         ContestPart::create([
             'name'=>$request->name,
             'contest_id'=>$contest->id,
@@ -78,9 +83,14 @@ class ContestPartsController extends Controller
      * @param Contest $contest
      * @param ContestPart $part
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, Contest $contest,ContestPart $part)
     {
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+
         $part->update([
             'name'=>$request->name,
         ]);

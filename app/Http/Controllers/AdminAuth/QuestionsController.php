@@ -43,9 +43,17 @@ class QuestionsController extends Controller
      * @param Contest $contest
      * @param ContestPart $part
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request,Contest $contest, ContestPart $part)
     {
+        $this->validate($request,[
+            'name'=>'required',
+            'text'=>'required',
+            'type'=>'required',
+            'weight'=>'required',
+        ]);
+
         $question = Question::create([
            'name'=>$request->name,
            'text'=>$request->text,

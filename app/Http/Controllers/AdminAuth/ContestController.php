@@ -35,11 +35,15 @@ class ContestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+           'name'=>'required',
+        ]);
         Contest::create([
             'name'=>$request->name,
             'token'=>Str::random(16),
@@ -75,9 +79,14 @@ class ContestController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @param Contest $contest
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, Contest $contest)
     {
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+
         $contest->update([
            'name'=>$request->name,
         ]);

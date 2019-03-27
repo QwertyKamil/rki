@@ -11,12 +11,27 @@
             <div class="fourteen wide tablet twelve wide computer column">
                 <div class="field">
                     {!! Form::text('name',null,['class'=>'','placeholder'=>'Pytanie']) !!}
+                    @if ($errors->has('name'))
+                        <div class="ui pointing red basic label">
+                            {{ $errors->first('name') }}
+                        </div>
+                    @endif
                 </div>
                 <div class="field">
                     {!! Form::number('weight',1,['class'=>'','placeholder'=>'waga']) !!}
+                    @if ($errors->has('weight'))
+                        <div class="ui pointing red basic label">
+                            {{ $errors->first('weight') }}
+                        </div>
+                    @endif
                 </div>
                 <div class="field">
                     {!! Form::textarea('text',null,['class'=>'']) !!}
+                    @if ($errors->has('text'))
+                        <div class="ui pointing red basic label">
+                            {{ $errors->first('text') }}
+                        </div>
+                    @endif
                 </div>
                 <questionadd></questionadd>
                 <div style="text-align: right">
