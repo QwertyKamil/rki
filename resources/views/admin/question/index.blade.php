@@ -25,7 +25,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td class="list-actions">
-                        {{--<a href="{{route('admin.admin-questions-edit', ['contest'=>$contest,'part'=>$part,'question'=>$item])}}" class="btn-table">Edytuj</a>--}}
+                        <a href="{{route('admin.admin-questions-edit', ['contest'=>$contest,'part'=>$part,'question'=>$item])}}" class="btn-table">Edytuj</a>
 
                         <a href="#" class="btn-table"
                            onclick="$('.ui.basic.modal-{{$item->id}}').modal('show');">Usuń</a>

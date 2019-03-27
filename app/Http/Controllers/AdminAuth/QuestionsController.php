@@ -64,20 +64,24 @@ class QuestionsController extends Controller
 
         if(isset($request->answers)){
             foreach ($request->answers as $key => $answer) {
-                Answer::create([
-                    'question_id'=>$question->id,
-                    'answer'=>$answer,
-                    'correct'=>($request->correct == $key+1)?1:0,
-                ]);
+                if($answer) {
+                    Answer::create([
+                        'question_id' => $question->id,
+                        'answer' => $answer,
+                        'correct' => ($request->correct == $key + 1) ? 1 : 0,
+                    ]);
+                }
             }
         }
         elseif(isset($request->patterns)){
             foreach ($request->patterns as $key => $answer) {
-                Answer::create([
-                    'question_id'=>$question->id,
-                    'answer'=>$answer,
-                    'correct'=>1,
-                ]);
+                if($answer) {
+                    Answer::create([
+                        'question_id' => $question->id,
+                        'answer' => $answer,
+                        'correct' => 1,
+                    ]);
+                }
             }
 
         }
@@ -125,6 +129,34 @@ class QuestionsController extends Controller
             'type'=>$request->type,
             'weight'=>$request->weight,
         ]);
+
+        $question->answers()->delete();
+
+        if(isset($request->answers)){
+            foreach ($request->answers as $key => $answer) {
+                if($answer){
+                    Answer::create([
+                        'question_id'=>$question->id,
+                        'answer'=>$answer,
+                        'correct'=>($request->correct == $key+1)?1:0,
+                    ]);
+                }
+            }
+        }
+        elseif(isset($request->patterns)){
+            foreach ($request->patterns as $key => $answer) {
+                if($answer) {
+                    Answer::create([
+                        'question_id' => $question->id,
+                        'answer' => $answer,
+                        'correct' => 1,
+                    ]);
+                }
+            }
+
+        }
+
+
         return redirect()->route('admin.admin-questions',['contest'=>$contest,'part'=>$part])->with('success','Zedytowano pytanie');
     }
 

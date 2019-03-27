@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register','Api\UserController@create');
 
+Route::get('question/{question}/answers','Api\ContestController@getQuestionAnswers');
+
 Route::post('contest/questions/{token}','Api\ContestController@get');
 Route::post('contest/questions/{token}/createAnswer','Api\ContestController@createAnswer');
 Route::post('contest/questions/{token}/getAnswer','Api\ContestController@getAnswer');

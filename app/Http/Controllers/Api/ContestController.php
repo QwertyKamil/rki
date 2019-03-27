@@ -88,4 +88,10 @@ class ContestController extends Controller
             ->where('user_id',$request->user_id)->first();
         return response()->json(compact('answer'),200);
     }
+
+    public function getQuestionAnswers(Request $request, Question $question)
+    {
+        $answers = $question->answers;
+        return response()->json(compact('answers'),200);
+    }
 }

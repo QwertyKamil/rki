@@ -22,8 +22,10 @@ window.Vue = require('vue');*/
 
 import Vue from 'vue';
 import questionadd from './components/question_add';
+import questionedit from './components/question_edit';
 import contest from './components/contestComponent';
 Vue.component('questionadd', questionadd);
+Vue.component('questionedit', questionedit);
 Vue.component('contest', contest);
 
 /**
